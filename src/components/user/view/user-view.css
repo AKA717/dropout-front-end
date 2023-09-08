@@ -1,5 +1,55 @@
-h2{
-    margin-top: 10rem;
+.container {
+    display: flex;
+    height: calc(97vh - 72px);
+    margin-top: 5rem;
+  }
+
+  .gender-label{
+    margin-left: 4px;
+  }
+
+  .select{
+    margin-left: 1rem;
+  }
+
+  .title{
+    margin: auto;
     font-family: Arial, Helvetica, sans-serif;
-    font-style: oblique;
-}
+    font-size: larger;
+  }
+
+  /* Style the first section (left side) */
+  .section1 {
+    flex: 4;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  /* Style the second section (right side) */
+  .section2 {
+    flex: 3;
+    background-color: #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: scroll; /* Add a vertical scrollbar */
+    margin-left: 1rem;
+    border-radius: 10px;
+  }
+
+  .scroll-content {
+    height: 200%;
+  }
+
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stack sections on smaller screens */
+    }
+
+    .section1, .section2 {
+      flex: 1; /* Equal height sections */
+    }
+  }
