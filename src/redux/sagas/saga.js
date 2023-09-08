@@ -2,19 +2,19 @@ import {put,takeEvery,all,call, takeLatest} from 'redux-saga/effects';
 import actions from '../actions/action-constants';
 
 const getProducts = () => {
-    return fetch('http://localhost:4000/api/user/get-products')
+    return fetch('http://localhost:5000/api/user/get-products')
         .then(response => ({response}))
         .catch(error => ({error}))
 }
 
 const LoginValidation = (data) => {
-
+    
     const userData = {
         username:data.email,
         password:data.password
     }
 
-    return fetch('http://localhost:4000/api/user/user-login',{
+    return fetch('http://localhost:5000/api/user/user-login',{
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const SignUp = (data) => {
         password : data.password
     }
 
-    return fetch('http://localhost:4000/api/user/signup',{
+    return fetch('http://localhost:5000/api/user/signup',{
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const AdminLogin = (data) => {
         password : data.password
     }
 
-    return fetch('http://localhost:4000/api/admin/login',{
+    return fetch('http://localhost:5000/api/admin/login',{
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -78,21 +78,6 @@ const AdminLogin = (data) => {
     .catch(error => {
         console.log(error)
     })
-}
-
-function* getProductsSaga(){
-
-    const {response,error} = yield call(getProducts);
-
-    if(response)
-    {
-        const data = yield response.json();
-        yield put({type:actions.HOME_PRODUCTS_FETCH,payload:data.products});
-    }
-    else
-    {
-        console.log(error);
-    }
 }
 
 function* handleloginStart(action){
@@ -205,7 +190,6 @@ export default function* rootSaga()
 {
     yield all(
         [
-            getProductsSaga(),
             watchForLoginStart(),
             watchForLogOutStart(),
             watchForSignUpStart(),
