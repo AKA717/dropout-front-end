@@ -37,6 +37,16 @@ const userReducer = (state=initState,action) =>
                 message : action.payload.message,
                 login:false
             }
+        case actions.STUDENT_DATA_SUCCESS:
+            return{
+                ...state,
+                message : action.payload
+            }
+        case actions.STUDENT_DATA_FAILED:
+            return{
+                ...state,
+                message : action.payload
+            }
         default:
             return state;
     }

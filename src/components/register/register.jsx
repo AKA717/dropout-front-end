@@ -59,7 +59,7 @@ const RegisterComponent = ({signUp,user}) => {
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                                 <div className="form-group w-100">
-                                                    <input type="text" className="form-control" name="name" placeholder="Name"
+                                                    <input type="text" className="form-control" name="name" placeholder="Name of the institution"
                                                     {...register('name', { required: true })} />
                                                 </div>
                                             </div>

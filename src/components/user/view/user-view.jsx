@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 import StudentCard from "../student-card/student-card";
 import './user-view.css';
 import { useNavigate } from "react-router-dom";
+import { studentDataAction } from "../../../redux/actions/actions";
 
-const UserViewComponent = ({ user }) => {
-
-    console.log("user view : ",user);
+const UserViewComponent = ({ user ,dataSubmit}) => {
 
     const navigate = useNavigate();
 
@@ -20,15 +19,16 @@ const UserViewComponent = ({ user }) => {
 
     const onSubmit = (data) => {
 
-        data.id = user.user.id;
+        data.userId = user.user.id;
         console.log(data);
+        dataSubmit(data);
         reset();
     };
 
     useEffect(() => {
         if (!user.login) {
-          // User is logged in, navigate to another route
-          navigate('/view', { replace: true });
+          // User is logged in, navigate to home page
+          navigate('/', { replace: true });
         }
       }, [user.login, navigate]);
 
@@ -38,6 +38,7 @@ const UserViewComponent = ({ user }) => {
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                     <p className="title mb-4">ENTER STUDENT DETAILS</p>
                 </div>
+                <p className="text-success">{user.message}</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3 input-group">
                         <input type="text" className="form-control" name="firstname" placeholder="First Name" {...register('firstname', { required: true })}/>
@@ -90,4 +91,9 @@ const mapStateToProps = ({ user }) => {
     return { user }
 }
 
-export default connect(mapStateToProps, null)(UserViewComponent);
+const mapDispatchToProps = dispatch => {
+
+    return {dataSubmit : (data) => dispatch(studentDataAction(data)) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserViewComponent);

@@ -1,14 +1,26 @@
 import {put,takeEvery,all,call, takeLatest} from 'redux-saga/effects';
 import actions from '../actions/action-constants';
 
-const getProducts = () => {
-    return fetch('http://localhost:5000/api/user/get-products')
-        .then(response => ({response}))
-        .catch(error => ({error}))
+const studentData = (data) => {
+    return fetch('http://localhost:5000/api/user/data',{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(data)
+    })
+    .then(async res =>
+        {
+            res = await res.json();
+            return res;
+        })
+    .catch(error => {
+        console.log(error)
+    })
 }
 
 const LoginValidation = (data) => {
-    
+
     const userData = {
         username:data.email,
         password:data.password
@@ -166,6 +178,26 @@ function* handleAdminLogOut(){
     }
 }
 
+function* handleStudentData(action){
+    try{ 
+        const res = yield call(studentData,action.payload);
+
+        console.log("Student data response : ",res);
+        
+        if(res.success)
+        {
+            yield put({type:actions.STUDENT_DATA_SUCCESS,payload:res.message});
+        }
+        else
+        {
+            yield put({type:actions.STUDENT_DATA_FAILED,payload:res.message})
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 function* watchForLoginStart(){
     yield takeLatest(actions.LOGIN_START,handleloginStart);
 }
@@ -186,6 +218,10 @@ function* watchForAdminLogOut(){
     yield takeLatest(actions.ADMIN_LOGOUT_START,handleAdminLogOut);
 }
 
+function* watchForStudentDataStart(){
+    yield takeLatest(actions.STUDENT_DATA_START,handleStudentData);
+}
+
 export default function* rootSaga()
 {
     yield all(
@@ -194,6 +230,7 @@ export default function* rootSaga()
             watchForLogOutStart(),
             watchForSignUpStart(),
             watchForAdminLoginStart(),
-            watchForAdminLogOut()
+            watchForAdminLogOut(),
+            watchForStudentDataStart()
     ]);
 }

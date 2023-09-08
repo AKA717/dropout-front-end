@@ -1,5 +1,15 @@
 import actions from "./action-constants";
 
+export const studentDataAction = (payload) => {
+
+    return(
+        {
+            type : actions.STUDENT_DATA_START,
+            payload : payload
+        }
+    );
+}
+
 export const signUpAction = (payload) => {
 
     return(

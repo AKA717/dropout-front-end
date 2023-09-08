@@ -21,7 +21,7 @@
   /* Style the first section (left side) */
   .section1 {
     flex: 4;
-    background-color: #f2f2f2;
+    background-color: rgb(254, 254, 254);
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden;
@@ -31,7 +31,7 @@
   /* Style the second section (right side) */
   .section2 {
     flex: 3;
-    background-color: #ddd;
+    background-color: #ebe7e7;
     padding: 20px;
     box-sizing: border-box;
     overflow-y: scroll; /* Add a vertical scrollbar */

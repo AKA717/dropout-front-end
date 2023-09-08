@@ -42,25 +42,9 @@ const LoginComponent = ({loginSubmit,user}) => {
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                                <p className="lead fw-normal mb-0 me-3">Sign in with</p>
-                                <button type="button" className="btn btn-primary btn-floating mx-1">
-                                    <i className="fab fa-facebook-f"></i>
-                                </button>
-
-                                <button type="button" className="btn btn-primary btn-floating mx-1">
-                                    <i className="fab fa-twitter"></i>
-                                </button>
-
-                                <button type="button" className="btn btn-primary btn-floating mx-1">
-                                    <i className="fab fa-linkedin-in"></i>
-                                </button>
                             </div>
 
-                            <div className="divider d-flex align-items-center my-4">
-                                <p className="text-center fw-bold mx-3 mb-0">Or</p>
-                            </div>
-
-                            <div className="email form-group">
+                            <div className="email form-group mt-4">
                                 <input type="text" className="form-control" name="email" placeholder="Email or Username"  {...register('email', { required: true })}/>
                             </div>
                             <div className="password form-group mt-3">
