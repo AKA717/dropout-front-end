@@ -16,7 +16,7 @@ const AdminNavbar = ({admin,adminLogOut}) => {
           <div className="container-fluid">
         
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <h3 className="mt-2">ADMIN</h3>
+              <h3 className="mt-2">EduDrop ADMIN PANEL</h3>
             </div>
 
             {

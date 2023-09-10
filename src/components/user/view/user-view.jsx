@@ -38,7 +38,6 @@ const UserViewComponent = ({ user ,dataSubmit}) => {
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                     <p className="title mb-4">ENTER STUDENT DETAILS</p>
                 </div>
-                <p className="text-success">{user.message}</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3 input-group">
                         <input type="text" className="form-control" name="firstname" placeholder="First Name" {...register('firstname', { required: true })}/>
@@ -77,11 +76,19 @@ const UserViewComponent = ({ user ,dataSubmit}) => {
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
+            
             <div className="section2">
-                <StudentCard/>
-                <StudentCard/>
-                <StudentCard/>
-                <StudentCard/>
+            <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                    <p className="title mb-4">CURRENT STUDENT ENTRIES</p>
+                </div>
+                <StudentCard name={{name:'NAME 1'}}/>
+                <StudentCard name={{name:'NAME 2'}}/>
+                <StudentCard name={{name:'NAME 3'}}/>
+                <StudentCard name={{name:'NAME 4'}}/>
+                <StudentCard name={{name:'NAME 5'}}/>
+                <StudentCard name={{name:'NAME 5'}}/>
+                <StudentCard name={{name:'NAME 7'}}/>
+                <StudentCard name={{name:'NAME 8'}}/>
             </div>
         </div>
     );

@@ -35,7 +35,7 @@ const Navbar = ({user,logOut}) => {
                   loading="lazy"
                 />
               </Link>
-              <h3 className="mt-2">Dropout Analysis</h3>
+              <h3 className="mt-2">EduDrop</h3>
             </div>
 
             {
