@@ -44,6 +44,9 @@ const UserViewComponent = ({ user ,dataSubmit}) => {
                         <input type="text" className="form-control" name="lastnamename" placeholder="Last Name" {...register('lastname', { required: true })}/>
                     </div>
                     <div className="mb-3">
+                        <input type="text" className="form-control" name="course" placeholder="Standard/Course" {...register('course', { required: true })}/>
+                    </div>
+                    <div className="mb-3">
                         <input type="text" className="form-control" name="age" placeholder="Age" {...register('age', { required: true })} />
                     </div>
                     <div className="mb-3">
